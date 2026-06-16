@@ -405,10 +405,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#correlated-input-during-training" class="md-nav__link">
+  <a href="#431-correlated-input-during-training" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Correlated input during training
+        4.3.1 Correlated input during training
       
     </span>
   </a>
@@ -416,10 +416,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#uncorrelated-input-during-training" class="md-nav__link">
+  <a href="#432-uncorrelated-input-during-training" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Uncorrelated input during training
+        4.3.2 Uncorrelated input during training
       
     </span>
   </a>
@@ -427,10 +427,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#no-input-during-training" class="md-nav__link">
+  <a href="#433-no-input-during-training" class="md-nav__link">
     <span class="md-ellipsis">
       
-        No input during training
+        4.3.3 No input during training
       
     </span>
   </a>
@@ -560,10 +560,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#correlated-input-during-training" class="md-nav__link">
+  <a href="#431-correlated-input-during-training" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Correlated input during training
+        4.3.1 Correlated input during training
       
     </span>
   </a>
@@ -571,10 +571,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#uncorrelated-input-during-training" class="md-nav__link">
+  <a href="#432-uncorrelated-input-during-training" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Uncorrelated input during training
+        4.3.2 Uncorrelated input during training
       
     </span>
   </a>
@@ -582,10 +582,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#no-input-during-training" class="md-nav__link">
+  <a href="#433-no-input-during-training" class="md-nav__link">
     <span class="md-ellipsis">
       
-        No input during training
+        4.3.3 No input during training
       
     </span>
   </a>
@@ -861,30 +861,31 @@ You can define custom grounding patterns for training and testing. This allows y
 <thead>
 <tr>
 <th>Parameter</th>
-<th>Model part</th>
 <th>Where to modify</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Stimulation strength</td>
+<td>config/config_training &gt; stim_strength</td>
+</tr>
+<tr>
 <td>Stimulus duration</td>
-<td>---</td>
-<td>---</td>
+<td>network/train_/[mode/].py</td>
 </tr>
 <tr>
 <td>Inter-stimulus interval</td>
-<td>---</td>
-<td>---</td>
-</tr>
-<tr>
-<td>Stimulation strength</td>
-<td>---</td>
-<td>---</td>
+<td>network/train_/[mode/].py</td>
 </tr>
 </tbody>
 </table>
+<p>Any parameters that are crucially important for the logic of the training loop, such as stimulus duration and inter-stimulus interval, should be specified in the training method of the network. By default, there are two training methods: <code>train_action_object()</code> and <code>train_nonspecific()</code>, which differ in what primary model areas receive correlated input (see next section for more details). </p>
+<ul>
+<li>Stimulus duration can be changed with the <code>t_on</code> parameter of the training method.</li>
+<li>Inter-stimulus interval is set through either (i) a dynamic waiting period until activity in (a) specific area(s) has gone below a specific threshold or (ii) the <code>t_off</code> parameter of the training method</li>
+</ul>
 <p>Setting correlated/uncorrelated/no input during training is a bit more involved than changing parameters. Input selection is handled in the selected training method of the model (see <code>network/train_nonspecific.py</code> for an example). During the training loop, pattern selection is passed through the variable <code>stim_specs</code>.</p>
-<h3 id="correlated-input-during-training">Correlated input during training</h3>
+<h3 id="431-correlated-input-during-training">4.3.1 Correlated input during training</h3>
 <p>The default setting of <code>network/train_nonspecific.py</code>. All primary input areas are stimulated with a pattern from their specific pattern vector. The 'correlated' part of this mode means that is V1 is stimulated with the pattern <code>visu[3]</code>, all other areas are stimulated with the pattern with index <code>3</code> in their respective vectors.</p>
 <pre><code>stim_specs={'V1': {'neurons': visu[patt_no],
                   'I_stim': stim_strength},
@@ -895,7 +896,7 @@ You can define custom grounding patterns for training and testing. This allows y
            'M1_i': {'neurons': arti[patt_no],
                  'I_stim':  stim_strength}}
 </code></pre>
-<h3 id="uncorrelated-input-during-training">Uncorrelated input during training</h3>
+<h3 id="432-uncorrelated-input-during-training">4.3.2 Uncorrelated input during training</h3>
 <p>Contrary to correlated input, uncorrelated input means that an area is still stimulated, but the input is randomized at every presentation. For example, if you want M1_L to receive uncorrelated input, the stim_specs definition would look as follows:</p>
 <pre><code>stim_specs={'V1': {'neurons': visu[patt_no],
                   'I_stim': stim_strength},
@@ -908,7 +909,7 @@ You can define custom grounding patterns for training and testing. This allows y
 </code></pre>
 <p>Note that this is the default logic for object/action word training: when learning an object word, M1_L receives uncorrelated stimulation, but when learning an action word, V1 receives uncorrelated stimulation.</p>
 <p>It is recommended to write your own stim_spec management logic. You can find the object/action training logic for inspiration in <code>utils/stim.py</code>.</p>
-<h3 id="no-input-during-training">No input during training</h3>
+<h3 id="433-no-input-during-training">4.3.3 No input during training</h3>
 <p>Contrary to uncorrelated input, there is also the option to turn input off completely. In previous research, this has been used to emulate a disconnect between a primary sensory or motor brain area and its corresponding sensory or motor input modality (i.e. optic nerves for V1). The recommended way of doing so is by setting <code>stim_strength</code> to <code>0</code>.</p>
 <pre><code>stim_specs={'V1': {'neurons': visu[patt_no],
                   'I_stim': 0},
@@ -937,6 +938,10 @@ You can define custom grounding patterns for training and testing. This allows y
 <p>Otherwise, there are no constraints on pattern design.</p>
 <p>The custom pattern reading function <code>read_pattern_from_file(["visu.txt", "motor.txt", "audi.txt", "arti.txt"], plot_patterns=True)</code> needs to be called after model initialization in <code>main/main_training.py</code>.</p>
 <h2 id="45-re-implementing-tomasello-et-al-2019">4.5 Re-implementing Tomasello et al. (2019)</h2>
+<p>Tomasello et al. (2019) uses an object-action-word training paradigm. The only difference to previous studies is that additional 'blind' models are trained, which do not receive external input to V1. To train a 'blind' model in CogniNest, the process is simple:</p>
+<p>1) Modify the <code>stim_specs</code> for all conditions to give no input to V1 (see Section 4.3.3)
+2) Run a simulation with <code>train_action_object()</code> as a training routine.
+3) Evaluate the training outcome after 500 training trials.</p>
 
 
 

@@ -910,9 +910,9 @@ You can define custom grounding patterns for training and testing. This allows y
 <p>The custom pattern reading function <code>read_pattern_from_file(["visu.txt", "motor.txt", "audi.txt", "arti.txt"], plot_patterns=True)</code> needs to be called after model initialization in <code>main/main_training.py</code>.</p>
 <h2 id="45-re-implementing-tomasello-et-al-2019">4.5 Re-implementing Tomasello et al. (2019)</h2>
 <p>Tomasello et al. (2019) uses an object-action-word training paradigm. The only difference to previous studies is that additional 'blind' models are trained, which do not receive external input to V1. To train a 'blind' model in CogniNest, the process is simple:</p>
-<p>1) Modify the <code>stim_specs</code> for all conditions to give no input to V1 (see Section 4.3.3)
-2) Run a simulation with <code>train_action_object()</code> as a training routine.
-3) Evaluate the training outcome after 500 training trials.</p>
+<p>1) Modify the <code>stim_specs</code> for all conditions to give no input to V1 (see Section 4.3.3)</p>
+<p>2) Run a simulation with <code>train_action_object()</code> as a training routine.</p>
+<p>3) Evaluate the training outcome after 500 training trials.</p>
 
 
 

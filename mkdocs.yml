@@ -1,0 +1,16 @@
+site_name: Brain-constrained modelling with CogniNest
+repo_url: https://github.com/MaximeCarriere/cogninest
+site_author: Fynn Dobler
+draft_docs: |
+  _draft.md             # Ignore any .md file ending in _draft
+
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: light green
+    accent: light blue
+  logo: "img/cogninest_logo.png"
+  favicon: "img/cogninest_logo.png"
+extra_css:
+  - stylesheets/extra.css

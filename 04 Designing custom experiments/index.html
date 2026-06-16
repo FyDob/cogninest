@@ -640,13 +640,25 @@
 <h1 id="04-designing-custom-experiments">04 Designing custom experiments</h1>
 <p>There is a variety of customization possibilities for the model. In this tutorial, you will learn how to adapt the model to your research question through the most common methods. If this tutorial does not cover your use case, please reach out to <a href="mailto:fynn.dobler@fu-berlin.de">fynn.dobler@fu-berlin.de</a> for discussion and advice!</p>
 <p>Broadly, there are 5 recommended ways of systematically changing model behaviour:</p>
-<p>1) Adjusting model parameters. The e- and i-neuron models, the Artola-Bröcher-Singer synaptic plasticity rules and the density of inter- and intra-area synaptic connections rely on a variety of parameters, which can be freely varied during model initialization.
-2) Adjusting fundamental model properties. These are fundamental changes to the morphology of the model. Please note that model functionality after such a change requires rigorous testing and analysis, and we cannot provide support for customized models at this point in time.
-  - You can replace the custom Felix e- and i-neuron models, as well as the Artola-Bröcher-Singer synaptic plasticity rules with any existing NEST implementations.
-  - You can modify the number of areas by changing the model initialization process.
-  - You can modify the topography of the model (i.e. which areas share connections) by changing the connectivity matrix during model initialization.
-3) Adjusting training/testing parameters. You can vary stimulus duration, inter-stimulus interval and the strength of the incoming current during stimulation. You can also vary which areas of the model receive correlated, uncorrelated or no input during training or testing.
-4) Changing stimulus properties. You can define custom grounding patterns for training and testing. This allows you to freely vary the number of stimulated neurons, their topographic distribution and whether grounding patterns have overlapping or non-overlapping neurons.</p>
+<p>1) Adjusting model parameters.
+The e- and i-neuron models, the Artola-Bröcher-Singer synaptic plasticity rules and the density of inter- and intra-area synaptic connections rely on a variety of parameters, which can be freely varied during model initialization.</p>
+<p>2) Adjusting fundamental model properties.
+These are fundamental changes to the morphology of the model. Please note that model functionality after such a change requires rigorous testing and analysis, and we cannot provide support for customized models at this point in time.</p>
+<ul>
+<li>
+<p>You can replace the custom Felix e- and i-neuron models, as well as the Artola-Bröcher-Singer synaptic plasticity rules with any existing NEST implementations.</p>
+</li>
+<li>
+<p>You can modify the number of areas by changing the model initialization process.</p>
+</li>
+<li>
+<p>You can modify the topography of the model (i.e. which areas share connections) by changing the connectivity matrix during model initialization.</p>
+</li>
+</ul>
+<p>3) Adjusting training/testing parameters.
+You can vary stimulus duration, inter-stimulus interval and the strength of the incoming current during stimulation. You can also vary which areas of the model receive correlated, uncorrelated or no input during training or testing.</p>
+<p>4) Changing stimulus properties.
+You can define custom grounding patterns for training and testing. This allows you to freely vary the number of stimulated neurons, their topographic distribution and whether grounding patterns have overlapping or non-overlapping neurons.</p>
 <p>The following sections provide an overview of possible modifications, and where and how to make them. At the end, you will train a congenitally blind model following the approach of <a href="https://doi.org/10.1038/s41598-019-39864-1">Tomasello et al., 2019</a> and evaluate the outcome.</p>
 <h2 id="41-adjusting-model-parameters">4.1 Adjusting model parameters</h2>
 <p>The following table provides an overview of core model parameters.</p>

@@ -317,10 +317,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-cogninest" class="md-nav__link">
+  <a href="#installing-cogninest-via-docker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing CogniNest
+        Installing CogniNest via Docker
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing CogniNest via Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pull-the-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pull the Docker Image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the Container
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syncing-files-between-the-container-and-the-host-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Syncing files between the container and the host machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-cogninest-from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing CogniNest from source
       
     </span>
   </a>
@@ -443,10 +493,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-cogninest" class="md-nav__link">
+  <a href="#installing-cogninest-via-docker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing CogniNest
+        Installing CogniNest via Docker
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing CogniNest via Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pull-the-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pull the Docker Image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the Container
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syncing-files-between-the-container-and-the-host-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Syncing files between the container and the host machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-cogninest-from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing CogniNest from source
       
     </span>
   </a>
@@ -474,11 +574,34 @@
 
 
 <h1 id="01-getting-started-installation">01 Getting Started - Installation</h1>
-<h2 id="installing-cogninest">Installing CogniNest</h2>
-<ul>
-<li>how to download from github</li>
-<li>install and link docker venv</li>
-</ul>
+<p>CogniNest is a NEST simulator module. To run it, NEST Simulator and all its pre-requisites need to be installed on your system. To achieve these pre-requisites, there are two options: either install CogniNest in a Docker container, or install NEST and CogniNest from source. In this tutorial, we will focus on the container solution, as it is the more convenient and stable installation process.</p>
+<h2 id="installing-cogninest-via-docker">Installing CogniNest via Docker</h2>
+<p>To quickly set up and run the NEST Simulator with the Felix Module, use the provided Docker image. Please note that you need to have Docker installed for these steps. If you don't, pleas</p>
+<h3 id="pull-the-docker-image">Pull the Docker Image</h3>
+<pre><code>docker pull maxc93/cogninest
+</code></pre>
+<h3 id="run-the-container">Run the Container</h3>
+<pre><code>docker run --rm -it maxc93/cogninest
+</code></pre>
+<p>If the application runs a web service, use:</p>
+<pre><code>docker run -d -p 8080:80 maxc93/cogninest
+</code></pre>
+<p>Then access it at <code>http://localhost:8080</code>.</p>
+<h3 id="syncing-files-between-the-container-and-the-host-machine">Syncing files between the container and the host machine</h3>
+<p>CogniNest produces both data and data visualization outputs, which you might want to further process and analyze on the host machine. To access files in the container, you can mount the container directory on the host machine.</p>
+<p>To do so, we recommend the following process to sync files between the host machine and the container:</p>
+<p>1) Start a container with <code>docker run --name &lt;container_name&gt; --rm -it maxc93/cogninest</code>.</p>
+<p>2) Create the directory you want to use as your synced volume on the host machine. Changes made in this directory by the container will be synced to the host, changes made on the host will be synced to the container. That means: you can program and interact with all relevant NEST files in your host environment and run NEST on the container. For the purpose of this tutorial, yours is called <code>path/to/host</code>.</p>
+<p>3) Copy all files you want to sync between your host machine and the container to the host directory with</p>
+<p><code>docker cp &lt;container_name&gt;:/app/cogninest path/to/host</code></p>
+<p>4) Stop and remove the old container with <code>docker stop &lt;container_name&gt;</code> and <code>docker rm &lt;container_name&gt;</code></p>
+<p>5) Start a new container with the same name and the host path as a volume:</p>
+<p><code>docker run --name &lt;container_name&gt; --rm -it -v path/to/host/cogninest:/app/cogninest maxc93/cogninest</code></p>
+<p>Now all code, model files and plots should sync to the host machine - you can edit the code and scripts, but run the actual model in the Docker container.</p>
+<h2 id="installing-cogninest-from-source">Installing CogniNest from source</h2>
+<p>Installing CogniNest/felixmodule from source enables you to modify basic model properties, such as the implementation of excitatory and inhibitory neurons, and the learning rule. However, we recommend to instead use CogniNest/felixmodule as is, and instead replacing neuron and synapse models with implementations provided by NEST during model initialization. We do not provide support for such changes. If you are, however, still interested in doing so, follow the instructions linked below.</p>
+<p>If you want to install CogniNest from scratch, please follow the <a href="https://nest-simulator.readthedocs.io/en/stable/installation/">installation instructions from source</a> on the NEST website. Please note that if you do not install NEST from source, it will not be possible to install the CogniNest module.</p>
+<p>To install CogniNest from source, follow the instructions on the <a href="https://github.com/MaximeCarriere/cogninest">GitHub repository</a>.</p>
 
 
 

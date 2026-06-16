@@ -363,6 +363,95 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Model diagnostics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualized-training-patterns-and-their-respective-between-pattern-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualized training patterns and their respective between-pattern overlap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-activity-during-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model activity during training
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-activity-during-training-raw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model activity during training (raw)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-state-during-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model state during training
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing the model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing the model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualizations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-test-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raw test data
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -473,6 +562,95 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Model diagnostics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualized-training-patterns-and-their-respective-between-pattern-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualized training patterns and their respective between-pattern overlap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-activity-during-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model activity during training
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-activity-during-training-raw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model activity during training (raw)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-state-during-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model state during training
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing the model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing the model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualizations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-test-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raw test data
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -496,9 +674,172 @@
 
 
 <h1 id="02-running-the-default-simulation">02 Running the default simulation</h1>
-<p>The default setting CogniNest ships with is object and action word learning (see Tomasello et al., 2017, 2018; Carrière et al., 2023). We will use it as an example of how to run a simulation in general, how to interpret model diagnostics during training and how to access model output.</p>
+<p>The default setting CogniNest ships with is object and action word learning (see <a href="https://doi.org/10.1016/j.neuropsychologia.2016.07.004">Tomasello et al., 2017</a>, <a href="https://doi.org/10.3389/fncom.2018.00088">2018</a>; <a href="https://doi.org/10.1080/0954898X.2024.2421196">Carrière et al., 2023</a>). We will use it as an example of how to run a simulation in general, how to interpret model diagnostics during training and how to access model output.</p>
 <h2 id="running-the-simulation">Running the simulation</h2>
+<p>Starting the docker container, you will be in the directory <code>/app/cogninest</code>. From there, you can start a model training routine with <code>python training_testing/main/main_training.py</code>.</p>
+<p>This command will start a verbose model simulation with the following expected output:</p>
+<pre><code>              -- N E S T --
+  Copyright (C) 2004 The NEST Initiative
+
+ Version: 3.6.0
+ Built: Jul 15 2024 22:12:52
+
+ This program is provided AS IS and comes with
+ NO WARRANTY. See the file LICENSE for details.
+
+ Problems or suggestions?
+   Visit https://www.nest-simulator.org
+
+ Type 'nest.help()' to find out more about NEST.
+
+
+Jun 11 10:21:25 Install [Info]:
+    loaded module Felix Module
+
+Initializing FelixNet
+Adding noise to external area: V1
+Adding noise to external area: M1_L
+Adding noise to external area: A1
+Adding noise to external area: M1_i
+
+🔗 **Creating Inter-Area Connections...**
+
+🌐 **Cross-System Connections:**
+Connecting Cross-System Areas: 100%|███████████████████████████████████████████████████| 20/20 [00:00&lt;00:00, 179.79it/s]
+
+🏠 **Within-System Connections:**
+Connecting Within-System Areas: 100%|██████████████████████████████████████████████████| 24/24 [00:00&lt;00:00, 155.76it/s]
+
+✅ Directory './plot_training' already exists. No files deleted.
+Build Time: 1.0 s
+✅ Step 3: Calling `show_owerlapp_pattern()`
+#################
+CHECKING OVERLAPP
+#################
+✅ Directory './plot_training' already exists. No files deleted.
+✅ Step 4: Calling 'plot_pattern_presence()'
+✅ Pattern presence subplot saved: ./plot_training/motor_patterns.png
+✅ Pattern presence subplot saved: ./plot_training/visu_patterns.png
+✅ Pattern presence subplot saved: ./plot_training/audi_patterns.png
+✅ Pattern presence subplot saved: ./plot_training/arti_patterns.png
+📁 Created directory './save_network'.
+📁 Created directory './processing_data'.
+</code></pre>
+<p>After this initiatization process, training begins. The command line will continuosly provide output about which training pattern is being presented, e.g.:</p>
+<pre><code>################
+Presentation patt_no: 3
+################
+Presentation patt_no: 11
+################
+Presentation patt_no: 4
+################
+Presentation patt_no: 2
+################
+Presentation patt_no: 7
+################
+Presentation patt_no: 1
+################
+Presentation patt_no: 7
+</code></pre>
+<p>This output gives insight into the structure of a CogniNest simulation:</p>
+<p>1) Import NEST</p>
+<p>2) Import felixmodule</p>
+<p>3) Initialize all network areas (individual neurons, within-area synaptic connections, between-area connections, noise generators to primary sensorimotor areas)</p>
+<p>4) Initialize diagnostic output directories (plot_training, save_network, processing_data)</p>
+<p>5) Initialize neural stimulation patterns for training and visualize them</p>
+<p>6) Begin training</p>
 <h2 id="model-diagnostics">Model diagnostics</h2>
+<p>At this point, you are already able to check basic model diagnostics. During training, the following diagnostics are collected and reported:</p>
+<h3 id="visualized-training-patterns-and-their-respective-between-pattern-overlap">Visualized training patterns and their respective between-pattern overlap</h3>
+<p>Depending on the research question, the training patterns should either be orthogonal to each other (i.e. share no stimulated neurons) or have a specific overlap structure (i.e. all patterns share two specific neurons, see <a href="https://doi.org/10.1007/s00426-021-01591-6">Henningsen-Schomers et al., 2022</a> and <a href="https://doi.org/10.1111/lang.12646">Dobler et al., 2024</a> for detailed overlap-based research questions and implementation).</p>
+<p>For the object-action paradigm, there should be no between-pattern overlap. Before you run a long training session, it is best practice to ensure that there is indeed no overlap in the randomly generated model patterns.</p>
+<p>Open <code>plot_training/visu_patterns.png</code>. The figure should look similar to this, with every dark square corresponding to a stimulated neuron on a 25x25 grid.</p>
+<p><img alt="Visual patterns for object-action training." src="../img/visu_patterns.png" /></p>
+<p>Visually inspect all other grounding patterns (motor, articulatory and auditory).</p>
+<p>For an overview of between-pattern overlap, open <code>plot_training/pattern_overlapp_matrix.png</code>. The figure should look similar to this, with the number of overlapping neurons plotted on a pattern-by-pattern matrix for each primary sensory and motor area. There should only be overlap on the identity diagonal in all four plots.</p>
+<p><img alt="Between-pattern overlap for object-action training." src="../img/pattern_overlapp_matrix.png" /></p>
+<h3 id="model-activity-during-training">Model activity during training</h3>
+<p>While training patterns should only be checked once - at the beginning of training - this diagnostic should be consulted throughout training, to spot unexpected model behaviour (e.g., unregulated, exploding activity during training, indicating a merging of cell assemblies) and interrupt training if necessary.</p>
+<p>By default, running the simulation will create a plot of the number of excitatory spikes per timesteps for each model area every 5 pattern presentations. The interval for plotting can be changed in <code>config/config_training.py</code>.</p>
+<p>Open <code>plot_training/plot_activation_0.png</code>. The figure - in the beginning of training - should look similar to this:</p>
+<p><img alt="Network activity during early object-action training." src="../img/plot_activation_0.png" /></p>
+<p>The title of the figure specifies which pattern is currently being presented, and how often it has been presented for. During early training trials (i.e. a low number of presentations), the above figure is characteristic of network activity: responses in the stimulated primary areas of the model (areas 0, 5, 6 and 11) consist of the stimulated neurons, but deeper layers of the model (e.g. 1, 2, 7, 8) respond with a sharp and short-lived burst of &gt;= 80 simulatenously active neurons. This early behaviour is due to the network being under-tuned at initialization: the randomly initialized synaptic connections are not yet specific enough to curtail this burst of activity.</p>
+<p>Only a few presentations later, the characteristic activity curves look like this:</p>
+<p><img alt="Network activity during slightly later object-action training." src="../img/plot_activation_1.png" /></p>
+<p>Spiking activity remains short-lived, but by now the learning rule has pruned surplus synaptic connections that were irrelevant to the training patterns. Now, activity no longer bursts out of control, and instead exhibits a steady increase the deeper the network area lies in the processing stream. 'Central' model areas (e.g., 2, 3, 8 and 9) are densely connected, and thus exhibit the highest number of spikes.</p>
+<h3 id="model-activity-during-training-raw">Model activity during training (raw)</h3>
+<p>The activity figures are plotted from raw data files in <code>processing_data</code>. If you wish to work with the raw model output, we recommend using the function <code>dat_from_file(string_pattern)</code> in <code>utils.gathering</code>. It converts the NEST output into a dataframe annotating the spiking neurons by model area.</p>
+<h3 id="model-state-during-training">Model state during training</h3>
+<p>The model state is saved at specific training trials (i.e. when all patterns have been presented N times). These are specified in <code>config/config_training.py</code>. The model state is defined in <code>network.store</code> as the following dictionary:</p>
+<pre><code>network = {
+        &quot;param_excitatory&quot;: list_param_value,
+        &quot;param_inhibitory&quot;: list_param_value_inh,
+        &quot;param_global&quot;: list_param_value_glob,
+        &quot;weight&quot;: weights,
+        &quot;pattern_motor&quot;: motor,
+        &quot;pattern_visual&quot;: visu,
+        &quot;pattern_auditory&quot;: audi,
+        &quot;pattern_articulatory&quot;: arti,
+        &quot;excitatory_neurons&quot;: excitatory_neurons,
+        &quot;inhibitory_neurons&quot;: inhibitory_neurons,
+        &quot;global_inhibition&quot;: global_inhibition,
+    }
+</code></pre>
+<p>The full network state thus consists of all neuron parameters, all synaptic weights, the initialized training patterns, and all simulated neurons. It is saved as a <code>pickle</code> file in <code>save_network</code>.</p>
+<p>Continue running training until the first network state is saved. By default, that is after 10 training trials.</p>
+<h2 id="testing-the-model">Testing the model</h2>
+<p>It is best practice to run training and testing as separate programs. This guarantees that the testing routine does not affect the learning outcome of the model. For testing, a saved model state (as described above) will be loaded.</p>
+<p>To begin testing, run <code>python training_testing/main/main_testing.py</code>. The expected output looks as follows:</p>
+<pre><code>              -- N E S T --
+  Copyright (C) 2004 The NEST Initiative
+
+ Version: 3.6.0
+ Built: Jul 15 2024 22:12:52
+
+ This program is provided AS IS and comes with
+ NO WARRANTY. See the file LICENSE for details.
+
+ Problems or suggestions?
+   Visit https://www.nest-simulator.org
+
+ Type 'nest.help()' to find out more about NEST.
+
+
+Jun 11 13:47:44 Install [Info]:
+    loaded module Felix Module
+Python interpreter: /usr/bin/python
+🚀 Starting FelixNet Testing...
+🚀 Starting FelixNet Testing...
+🧪 Testing Network: save_network
+✅ Directory './testing_data/testing_save_network' already exists. No files deleted.
+🎵🗣️ Running both auditory and articulatory tests for save_network
+network_out:  ./testing_data/testing_save_network
+✅ Directory './testing_data/testing_save_network' already exists. No files deleted.
+##############################
+     NETWORK: 10
+##############################
+save_network/network_10
+Initializing FelixNet
+['V1' 'TO' 'AT' 'PF_L' 'PM_L' 'M1_L' 'A1' 'AB' 'PB' 'PF_i' 'PM_i' 'M1_i']
+Adding pg noise to:  V1
+Adding pg noise to:  M1_L
+Adding pg noise to:  A1
+Adding pg noise to:  M1_i
+✅ Directory './testing_data' already exists. No files deleted.
+</code></pre>
+<p>After loading the network at training trial 10, testing will begin. At the end of each test stimulation, a few verbose diagnostics will be printed to the console:</p>
+<pre><code>TESTING
+      STIM:   0
+patt_no: 0
+gi_AB: 0.09858476783301198
+gi_PM_i: 0.07913991616811732
+gi_AB: 0.41978889525143726
+gi_PM_i: 0.0984324424996777
+</code></pre>
+<h3 id="visualizations">Visualizations</h3>
+<p>Visualizations of testing outcomes - rudimentary results like cell assembly size by area - can be accessed in <code>./graphs</code>.</p>
+<h3 id="raw-test-data">Raw test data</h3>
+<p>Raw, unprocessed test data can be found in <code>./testing_data</code>.</p>
 
 
 
